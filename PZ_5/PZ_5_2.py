@@ -8,7 +8,7 @@
 def digitcountsum(k):
     c = len(str(k))
     s = 0
-    for i in range(c):
+    for u in range(c):
         s += k % 10
         k //= 10
     return c, s
@@ -17,7 +17,7 @@ def digitcountsum(k):
 for i in range(1, 6):
     while True:
         try:
-            a = int(input(f'введите {i} число >> '))
+            a = int(input(f'введите {i} число (целое положительное) >> '))
             if a > 0:
                 break
             else:

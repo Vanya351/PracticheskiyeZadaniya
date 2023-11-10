@@ -12,11 +12,11 @@ while 1:
     except ValueError:
         print("n должно быть числом!\n")
 
-a = 0
-b = len(str(n))
+a, i = 0, 0
 
-for i in range(b):
+while n != 0:
     a += n % 10
     n //= 10
+    i += 1
 
-print("сумма цифр числа =", a, "\nколичество цифр числа = ", b)
+print("сумма цифр числа =", a, "\nколичество цифр числа = ", i)
