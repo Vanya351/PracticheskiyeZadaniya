@@ -9,10 +9,7 @@ print('матрица до преобразования')
 for i in m:
     print(i)
 
-for x in range(len(m)):
-    for y in range(len(m[0])):
-        if m[x][y] % 2 == 1:
-            m[x][y] = 0
+m = [[0 if m[x][y] % 2 == 1 else m[x][y] for y in range(r)] for x in range(len(m))]
 
 print('\nконечная матрица')
 for i in m:

@@ -9,8 +9,7 @@ print('матрица до преобразования')
 for i in m:
     print(i)
 
-for i in range(len(m)):
-    m[i][1] **= 2
+m = [[m[i][u] if u != 1 else m[i][u] ** 2 for u in range(r)] for i in range(len(m))]
 
 print('\nконечная матрица')
 for i in m:
