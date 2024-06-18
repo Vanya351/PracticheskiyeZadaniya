@@ -1,3 +1,6 @@
+# реализовать прототип с применением пакета tk максимально приближенный к оригиналу
+# https://www.devlounge.net/wp-content/uploads/2011/02/24ways.jpg
+
 import tkinter as tk
 
 window = tk.Tk()
@@ -19,6 +22,7 @@ def return_placeholders(entry=None, text=None):
     placeholder(name, ' First and last name')
     placeholder(email, ' example@domain.com')
     placeholder(phone, ' Eg. +447500000000')
+    placeholder(cname, ' Exact name as on the card')
     if entry is not None:
         if entry.get() == text:
             entry.delete(0, tk.END)
@@ -63,12 +67,15 @@ c.create_text(30, 550, font=('Times New Roman', 14), text='Country', anchor=tk.N
 
 address = tk.Text(font=('Times New Roman', 14, 'italic'), fg='black', highlightthickness=0, border=0)
 address.place(width=240, height=125, anchor=tk.NW, x=170, y=322)
+address.bind('<Button-1>', lambda event: return_placeholders())
 
 post = tk.Entry(font=('Times New Roman', 14, 'italic'), fg='black', highlightthickness=0, border=0)
 post.place(width=240, height=35, anchor=tk.NW, x=170, y=477)
+post.bind('<Button-1>', lambda event: return_placeholders())
 
 country = tk.Entry(font=('Times New Roman', 14, 'italic'), fg='black', highlightthickness=0, border=0)
 country.place(width=240, height=35, anchor=tk.NW, x=170, y=542)
+country.bind('<Button-1>', lambda event: return_placeholders())
 
 c.create_text(20, 610, font=('Times New Roman', 16), text="Step 3: Card details", anchor=tk.NW)
 c.create_rectangle(20, 650, 494, 730, fill="#C9D584", outline="#EAEDCF", width=2)
@@ -80,19 +87,36 @@ c.create_text(30, 755, font=('Times New Roman', 14), text='Card number', anchor=
 c.create_text(30, 820, font=('Times New Roman', 14), text='Security code', anchor=tk.NW)
 c.create_text(30, 885, font=('Times New Roman', 14), text='Name of card', anchor=tk.NW)
 
-card1 = tk.Radiobutton(bg="#C9D584")
+r_var = tk.IntVar()
+
+card1 = tk.Radiobutton(bg="#C9D584", variable=r_var, value=1, text='VISA')
 card1.place(anchor=tk.NW, x=50, y=695)
+card1.bind('<Button-1>', lambda event: return_placeholders())
 
-card2 = tk.Radiobutton(bg="#C9D584")
+card2 = tk.Radiobutton(bg="#C9D584", variable=r_var, value=2, text='AmEx')
 card2.place(anchor=tk.NW, x=180, y=695)
+card2.bind('<Button-1>', lambda event: return_placeholders())
 
-card3 = tk.Radiobutton(bg="#C9D584")
+card3 = tk.Radiobutton(bg="#C9D584", variable=r_var, value=3, text='Mastercard')
 card3.place(anchor=tk.NW, x=310, y=695)
+card3.bind('<Button-1>', lambda event: return_placeholders())
 
 card = tk.Entry(font=('Times New Roman', 14, 'italic'), fg='black', highlightthickness=0, border=0)
 card.place(width=240, height=35, anchor=tk.NW, x=170, y=747)
+card.bind('<Button-1>', lambda event: return_placeholders())
 
 code = tk.Entry(font=('Times New Roman', 14, 'italic'), fg='black', highlightthickness=0, border=0)
 code.place(width=240, height=35, anchor=tk.NW, x=170, y=812)
+code.bind('<Button-1>', lambda event: return_placeholders())
+
+cname = tk.Entry(font=('Times New Roman', 14, 'italic'), fg='grey', highlightthickness=0, border=0)
+cname.place(width=240, height=35, anchor=tk.NW, x=170, y=877)
+placeholder(cname, ' Exact name as on the card')
+cname.bind('<Button-1>', lambda event: return_placeholders(cname, ' Exact name as on the card'))
+cname.bind('<Return>', lambda event: placeholder(cname, ' Exact name as on the card'))
+
+buy = tk.Button(font=('Times New Roman', 20), fg='white', bg='#49521D', text='BUY IT!', width=10)
+buy.place(x=175, y=940)
+buy.bind('<Button-1>', lambda event: return_placeholders())
 
 window.mainloop()
