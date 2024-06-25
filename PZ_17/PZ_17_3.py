@@ -32,7 +32,11 @@ if not os.path.isdir("test1"):
 os.rename("../PZ_6/pz6fl1.txt", "pz6fl1.txt")
 os.rename("../PZ_6/pz6fl2.txt", "pz6fl2.txt")
 os.rename("../PZ_7/pz7fl1.txt", "test1/pz7fl1.txt")
-os.rename("test1/pz7fl1.txt", "test.txt")
+os.rename("test1/pz7fl1.txt", "test1/test.txt")
+
+print('\nразмер файлов в test:', end=' ')
+fls = [i for _, __, i in os.walk(".")]
+[print(i, os.stat(i).st_size, 'Байт', end=' ') for i in fls[0]]
 
 os.chdir("../PZ_11")
 min_file = sorted(os.listdir(), key=lambda i: len(i))[0]
