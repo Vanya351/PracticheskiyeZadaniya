@@ -3,4 +3,4 @@ class NewClass:
         self.info = data
 
     def get_info(self):
-        return self.info
+        return "my info: " + str(self.info)
